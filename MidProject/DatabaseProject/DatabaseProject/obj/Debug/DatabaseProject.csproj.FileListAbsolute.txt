@@ -1,0 +1,13 @@
+C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\bin\Debug\DatabaseProject.exe.config
+C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\bin\Debug\DatabaseProject.exe
+C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\bin\Debug\DatabaseProject.pdb
+C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Debug\DatabaseProject.csproj.AssemblyReference.cache
+C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Debug\DatabaseProject.Form1.resources
+C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Debug\DatabaseProject.Properties.Resources.resources
+C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Debug\DatabaseProject.csproj.GenerateResource.cache
+C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Debug\DatabaseProject.csproj.CoreCompileInputs.cache
+C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Debug\DatabaseProject.exe
+C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Debug\DatabaseProject.pdb
+C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Debug\DatabaseProject.CLO.resources
+C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Debug\DatabaseProject.Assessment.resources
+C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Debug\DatabaseProject.Rubric.resources

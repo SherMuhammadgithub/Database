@@ -1,0 +1,13 @@
+C:\Users\dell\Pictures\C#OOP(Programmig)\EmployeeMS\EmployeeMS\bin\Debug\EmployeeMS.exe.config
+C:\Users\dell\Pictures\C#OOP(Programmig)\EmployeeMS\EmployeeMS\bin\Debug\EmployeeMS.exe
+C:\Users\dell\Pictures\C#OOP(Programmig)\EmployeeMS\EmployeeMS\bin\Debug\EmployeeMS.pdb
+C:\Users\dell\Pictures\C#OOP(Programmig)\EmployeeMS\EmployeeMS\obj\Debug\EmployeeMS.csproj.AssemblyReference.cache
+C:\Users\dell\Pictures\C#OOP(Programmig)\EmployeeMS\EmployeeMS\obj\Debug\EmployeeMS.Form1.resources
+C:\Users\dell\Pictures\C#OOP(Programmig)\EmployeeMS\EmployeeMS\obj\Debug\EmployeeMS.Properties.Resources.resources
+C:\Users\dell\Pictures\C#OOP(Programmig)\EmployeeMS\EmployeeMS\obj\Debug\EmployeeMS.csproj.GenerateResource.cache
+C:\Users\dell\Pictures\C#OOP(Programmig)\EmployeeMS\EmployeeMS\obj\Debug\EmployeeMS.csproj.CoreCompileInputs.cache
+C:\Users\dell\Pictures\C#OOP(Programmig)\EmployeeMS\EmployeeMS\obj\Debug\EmployeeMS.exe
+C:\Users\dell\Pictures\C#OOP(Programmig)\EmployeeMS\EmployeeMS\obj\Debug\EmployeeMS.pdb
+C:\Users\dell\Pictures\C#OOP(Programmig)\EmployeeMS\EmployeeMS\obj\Debug\EmployeeMS.Employees.resources
+C:\Users\dell\Pictures\C#OOP(Programmig)\EmployeeMS\EmployeeMS\obj\Debug\EmployeeMS.Departments.resources
+C:\Users\dell\Pictures\C#OOP(Programmig)\EmployeeMS\EmployeeMS\obj\Debug\EmployeeMS.Salary.resources
