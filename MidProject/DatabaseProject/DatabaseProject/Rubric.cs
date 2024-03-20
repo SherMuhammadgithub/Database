@@ -11,14 +11,15 @@ using System.Windows.Forms;
 
 namespace DatabaseProject
 {
+
     public partial class Rubric : Form
     {
-        private string connectionString; 
+        Functions Connection;
 
-        public Rubric(string connectionString)
+        public Rubric()
         {
             InitializeComponent();
-            this.connectionString = connectionString; // Store connection string in constructor
+            Connection = new Functions();
             CloData();
             Rubric_Load();
         }
@@ -26,20 +27,10 @@ namespace DatabaseProject
         private void CloData()
         {
             string query = "SELECT * FROM Clo";
+            DataTable dt = Connection.GetData(query);
             CLOsCb.DisplayMember = "Name";
             CLOsCb.ValueMember = "id";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    DataTable dt = new DataTable();
-                    dt.Load(command.ExecuteReader());
-                    CLOsCb.DataSource = dt;
-                }
-            }
+            CLOsCb.DataSource = dt;
         }
 
         private void AddRubrc_Click(object sender, EventArgs e)
@@ -56,57 +47,35 @@ namespace DatabaseProject
                     string details = InputRubDetail.Text;
                     int cloId = Convert.ToInt32(CLOsCb.SelectedValue);
 
-                    string query = "INSERT INTO Rubric(Id, Details, CloId) VALUES (@RubricId, @Details, @CloId)";
+                    string Query = "INSERT INTO Rubric(Id, Details, CloId) VALUES ({0}, '{1}', {2})";
+                    Query = string.Format(Query, rubricId, details, cloId);
 
-                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    int rowsAffected = Connection.SetData(Query);
+
+                    if (rowsAffected == 1)
                     {
-                        connection.Open();
-
-                        using (SqlCommand command = new SqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@RubricId", rubricId);
-                            command.Parameters.AddWithValue("@Details", details);
-                            command.Parameters.AddWithValue("@CloId", cloId);
-
-                            int rowsAffected = command.ExecuteNonQuery();
-
-                            if (rowsAffected == 1)
-                            {
-                                MessageBox.Show("Rubric Added Successfully");
-                                Rubric_Load();
-                                InputRbrcId.Text = "";
-                                InputRubDetail.Text = "";
-                                CLOsCb.Text = "";
-                            }
-                            else
-                            {
-                                MessageBox.Show("Failed to add rubric.");
-                            }
-                        }
+                        MessageBox.Show("Rubric Added Successfully");
+                        Rubric_Load();
+                        InputRbrcId.Text = "";
+                        InputRubDetail.Text = "";
+                        CLOsCb.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to add rubric.");
                     }
                 }
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);
-            }
+       }
         }
-
         private void Rubric_Load()
         {
             string query = "SELECT * FROM Rubric";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    DataTable dt = new DataTable();
-                    dt.Load(command.ExecuteReader());
-                    RbrcDataGrid.DataSource = dt;
-                }
-            }
+            DataTable dt = Connection.GetData(query);
+            RbrcDataGrid.DataSource = dt;
         }
     }
 }

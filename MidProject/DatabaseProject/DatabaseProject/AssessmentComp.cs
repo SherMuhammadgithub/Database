@@ -14,12 +14,12 @@ namespace DatabaseProject
 {
     public partial class AssessmentComp : Form
     {
-        private string connectionString; 
+        Functions Connection;
 
-        public AssessmentComp(string connectionString)
+        public AssessmentComp()
         {
             InitializeComponent();
-            this.connectionString = connectionString; 
+            Connection = new Functions();
             LoadRbrcs();
             LoadAssessments();
             LoadAssessmentComp();
@@ -28,39 +28,19 @@ namespace DatabaseProject
         private void LoadRbrcs()
         {
             string query = "SELECT * FROM Rubric";
+            DataTable dt = Connection.GetData(query);
             CbRbrcs.DisplayMember = "Id"; 
             CbRbrcs.ValueMember = "Id"; 
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    DataTable dt = new DataTable();
-                    dt.Load(command.ExecuteReader());
-                    CbRbrcs.DataSource = dt;
-                }
-            }
+            CbRbrcs.DataSource = dt;
         }
 
         private void LoadAssessments()
         {
             string query = "SELECT * FROM Assessment";
+            DataTable dt = Connection.GetData(query);
             CbAssmnt.DisplayMember = "Title";
             CbAssmnt.ValueMember = "Id";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    DataTable dt = new DataTable();
-                    dt.Load(command.ExecuteReader());
-                    CbAssmnt.DataSource = dt;
-                }
-            }
+            CbAssmnt.DataSource = dt;
         }
 
         private void Add_Click(object sender, EventArgs e)
@@ -80,27 +60,15 @@ namespace DatabaseProject
                     DateTime dateUpdated = DateTime.Now;
                     int assessmentId = Convert.ToInt32(CbAssmnt.SelectedValue);
 
-                    string query = "INSERT INTO AssessmentComponent(Name, RubricId, TotalMarks, DateCreated, DateUpdated, AssessmentId) VALUES (@Name, @RubricId, @TotalMarks, @DateCreated, @DateUpdated, @AssessmentId)";
-
-                    using (SqlConnection connection = new SqlConnection(connectionString))
-                    {
-                        connection.Open();
-
-                        using (SqlCommand command = new SqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@Name", name);
-                            command.Parameters.AddWithValue("@RubricId", rubricId);
-                            command.Parameters.AddWithValue("@TotalMarks", totalMarks);
-                            command.Parameters.AddWithValue("@DateCreated", dateCreated);
-                            command.Parameters.AddWithValue("@DateUpdated", dateUpdated);
-                            command.Parameters.AddWithValue("@AssessmentId", assessmentId);
-
-                            int rowsAffected = command.ExecuteNonQuery();
-
-                            if (rowsAffected == 1)
+                    string query = "INSERT INTO AssessmentComponent(Name, RubricId, TotalMarks, DateCreated, DateUpdated, AssessmentId)" +
+                        " VALUES ('{0}', {1}, {2}, '{3}', '{4}', {5})";
+                    query = string.Format(query, name, rubricId, totalMarks, dateCreated, dateUpdated, assessmentId);
+                    int i = Connection.SetData(query);
+                            if (i ==  1)
                             {
-                                LoadAssessmentComp();
+                                
                                 MessageBox.Show("Assessment Component Added Successfully");
+                                LoadAssessmentComp();
                                 InputName.Text = "";
                                 CbAssmnt.Text = "";
                                 CbRbrcs.Text = "";
@@ -110,10 +78,10 @@ namespace DatabaseProject
                             {
                                 MessageBox.Show("Failed to add assessment component.");
                             }
-                        }
+                        
                     }
                 }
-            }
+            
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);
@@ -123,18 +91,9 @@ namespace DatabaseProject
         private void LoadAssessmentComp()
         {
             string query = "SELECT * FROM AssessmentComponent";
+            DataTable dt = Connection.GetData(query);
+            AssmntCompGrid.DataSource = dt;
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    DataTable dt = new DataTable();
-                    dt.Load(command.ExecuteReader());  // This line was missing
-                    AssmntCompGrid.DataSource = dt;
-                }
-            }
         }
     }
 }

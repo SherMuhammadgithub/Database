@@ -30,12 +30,13 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.CbRegNo = new System.Windows.Forms.ComboBox();
-            this.DatePick = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CbStatus = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.Add = new System.Windows.Forms.Button();
+            this.DatePick = new System.Windows.Forms.DateTimePicker();
+            this.SessionAttend = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -54,13 +55,6 @@
             this.CbRegNo.Name = "CbRegNo";
             this.CbRegNo.Size = new System.Drawing.Size(200, 24);
             this.CbRegNo.TabIndex = 1;
-            // 
-            // DatePick
-            // 
-            this.DatePick.Location = new System.Drawing.Point(39, 233);
-            this.DatePick.Name = "DatePick";
-            this.DatePick.Size = new System.Drawing.Size(200, 22);
-            this.DatePick.TabIndex = 2;
             // 
             // label2
             // 
@@ -107,11 +101,27 @@
             this.Add.UseVisualStyleBackColor = true;
             this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
+            // DatePick
+            // 
+            this.DatePick.Location = new System.Drawing.Point(39, 233);
+            this.DatePick.Name = "DatePick";
+            this.DatePick.Size = new System.Drawing.Size(200, 22);
+            this.DatePick.TabIndex = 2;
+            // 
+            // SessionAttend
+            // 
+            this.SessionAttend.FormattingEnabled = true;
+            this.SessionAttend.Location = new System.Drawing.Point(300, 213);
+            this.SessionAttend.Name = "SessionAttend";
+            this.SessionAttend.Size = new System.Drawing.Size(200, 24);
+            this.SessionAttend.TabIndex = 8;
+            // 
             // Attendance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.SessionAttend);
             this.Controls.Add(this.Add);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.CbStatus);
@@ -131,11 +141,12 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CbRegNo;
-        private System.Windows.Forms.DateTimePicker DatePick;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox CbStatus;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button Add;
+        private System.Windows.Forms.DateTimePicker DatePick;
+        private System.Windows.Forms.ComboBox SessionAttend;
     }
 }

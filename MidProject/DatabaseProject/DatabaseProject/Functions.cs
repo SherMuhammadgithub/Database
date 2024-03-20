@@ -42,5 +42,37 @@ namespace DatabaseProject
             Con.Close();
             return cnt;
         }
+        public int SetDataAndReturnID(string query)
+        {
+            int newId = 0;
+
+            if (Con.State == ConnectionState.Closed)
+            {
+                Con.Open();
+            }
+
+            try
+            {
+                // Combine insert and select in one query
+                Cmd.CommandText = query + "; SELECT SCOPE_IDENTITY();";
+                using (var reader = Cmd.ExecuteReader())
+                {
+                    reader.Read();
+                    newId = reader.GetInt32(0);  //ID
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle potential exceptions during database operations
+                Console.WriteLine("Error retrieving ID: " + ex.Message);
+            }
+            finally
+            {
+                Con.Close();
+            }
+
+            return newId;
+        }
+
     }
 }
