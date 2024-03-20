@@ -175,7 +175,7 @@
         private System.Windows.Forms.TextBox InputAssTWeightage;
         private System.Windows.Forms.DataGridView AssessmentDataGrid;
         private System.Windows.Forms.Button AddAssmnt;
-        private System.Windows.Forms.Button Update;
+        private new System.Windows.Forms.Button Update;
         private System.Windows.Forms.Button Delete;
     }
 }

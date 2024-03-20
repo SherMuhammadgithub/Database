@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient; // Required for SqlConnection
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,26 +13,33 @@ namespace DatabaseProject
 {
     public partial class Rubric : Form
     {
-        Functions Connection;
-        public Rubric()
+        private string connectionString; 
+
+        public Rubric(string connectionString)
         {
             InitializeComponent();
-            Connection = new Functions();
+            this.connectionString = connectionString; // Store connection string in constructor
             CloData();
             Rubric_Load();
         }
+
         private void CloData()
         {
-            string Query = "SELECT * FROM Clo";
+            string query = "SELECT * FROM Clo";
             CLOsCb.DisplayMember = "Name";
             CLOsCb.ValueMember = "id";
-            DataTable dt = Connection.GetData(Query);
-            CLOsCb.DataSource = dt;
-        }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
 
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    DataTable dt = new DataTable();
+                    dt.Load(command.ExecuteReader());
+                    CLOsCb.DataSource = dt;
+                }
+            }
         }
 
         private void AddRubrc_Click(object sender, EventArgs e)
@@ -44,15 +52,37 @@ namespace DatabaseProject
                 }
                 else
                 {
-                   string Query = "INSERT INTO Rubric(Id,Details, CloId) VALUES('" + InputRbrcId.Text + "','" + InputRubDetail.Text + "', '" + CLOsCb.SelectedValue + "')";
-                    int i = Connection.SetData(Query);
-                    if (i == 1) // means 1 row is affected
+                    int rubricId = int.Parse(InputRbrcId.Text.ToString());
+                    string details = InputRubDetail.Text;
+                    int cloId = Convert.ToInt32(CLOsCb.SelectedValue);
+
+                    string query = "INSERT INTO Rubric(Id, Details, CloId) VALUES (@RubricId, @Details, @CloId)";
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
                     {
-                        MessageBox.Show("Rubric Added Successfully");
-                        Rubric_Load();
-                        InputRbrcId.Text = "";
-                        InputRubDetail.Text = "";
-                        CLOsCb.Text = "";
+                        connection.Open();
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@RubricId", rubricId);
+                            command.Parameters.AddWithValue("@Details", details);
+                            command.Parameters.AddWithValue("@CloId", cloId);
+
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            if (rowsAffected == 1)
+                            {
+                                MessageBox.Show("Rubric Added Successfully");
+                                Rubric_Load();
+                                InputRbrcId.Text = "";
+                                InputRubDetail.Text = "";
+                                CLOsCb.Text = "";
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to add rubric.");
+                            }
+                        }
                     }
                 }
             }
@@ -61,16 +91,22 @@ namespace DatabaseProject
                 MessageBox.Show(err.Message);
             }
         }
+
         private void Rubric_Load()
         {
-            string Query = "SELECT * FROM Rubric";
-            DataTable dt = Connection.GetData(Query);
-            RbrcDataGrid.DataSource = dt;
-        }
+            string query = "SELECT * FROM Rubric";
 
-        private void RbrcDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // i'll use it in future if needed
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    DataTable dt = new DataTable();
+                    dt.Load(command.ExecuteReader());
+                    RbrcDataGrid.DataSource = dt;
+                }
+            }
         }
     }
 }

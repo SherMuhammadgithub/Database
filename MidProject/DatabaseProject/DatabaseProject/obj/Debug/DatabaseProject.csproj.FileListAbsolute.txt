@@ -11,3 +11,6 @@ C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Deb
 C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Debug\DatabaseProject.CLO.resources
 C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Debug\DatabaseProject.Assessment.resources
 C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Debug\DatabaseProject.Rubric.resources
+C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Debug\DatabaseProject.Rubric_Level.resources
+C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Debug\DatabaseProject.AssessmentComp.resources
+C:\Users\dell\Pictures\C#OOP(Programmig)\DatabaseProject\DatabaseProject\obj\Debug\DatabaseProject.Student.resources

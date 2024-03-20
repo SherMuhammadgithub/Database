@@ -64,7 +64,7 @@
             this.label2.Size = new System.Drawing.Size(91, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Rubric Details";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+ 
             // 
             // AddRubrc
             // 
@@ -102,8 +102,6 @@
             this.RbrcDataGrid.RowTemplate.Height = 24;
             this.RbrcDataGrid.Size = new System.Drawing.Size(445, 200);
             this.RbrcDataGrid.TabIndex = 12;
-            this.RbrcDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RbrcDataGrid_CellContentClick);
-            // 
             // InputRbrcId
             // 
             this.InputRbrcId.Location = new System.Drawing.Point(47, 77);
