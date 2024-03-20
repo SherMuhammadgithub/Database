@@ -14,12 +14,12 @@ namespace DatabaseProject
 {
     public partial class AssessmentComp : Form
     {
-        private string connectionString; // Replace with your actual connection string
+        private string connectionString; 
 
         public AssessmentComp(string connectionString)
         {
             InitializeComponent();
-            this.connectionString = connectionString; // Store connection string in constructor
+            this.connectionString = connectionString; 
             LoadRbrcs();
             LoadAssessments();
             LoadAssessmentComp();
@@ -28,8 +28,8 @@ namespace DatabaseProject
         private void LoadRbrcs()
         {
             string query = "SELECT * FROM Rubric";
-            CbRbrcs.DisplayMember = "Id"; // Assuming "Id" is a column containing rubrics' IDs
-            CbRbrcs.ValueMember = "Id"; // This seems like a mistake, likely should be "CbRbrcs.ValueMember"
+            CbRbrcs.DisplayMember = "Id"; 
+            CbRbrcs.ValueMember = "Id"; 
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
