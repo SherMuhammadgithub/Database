@@ -1,0 +1,21 @@
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\bin\Debug\Mid Project.exe.config
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\bin\Debug\Mid Project.exe
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\bin\Debug\Mid Project.pdb
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid Project.csproj.AssemblyReference.cache
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid_Project.FormMainMenu.resources
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid_Project.Properties.Resources.resources
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid Project.csproj.GenerateResource.cache
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid Project.csproj.CoreCompileInputs.cache
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid Project.csproj.CopyComplete
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid Project.exe
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid Project.pdb
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid_Project.Forms.Home.resources
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid_Project.Forms.Assessments.resources
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid_Project.Forms.Attendence.resources
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid_Project.Forms.CLOs.resources
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid_Project.Forms.Components.resources
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid_Project.Forms.Evaluation.resources
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid_Project.Forms.Reports.resources
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid_Project.Forms.Rubrics.resources
+C:\Users\mhmdu\Desktop\PARACTICE DB\Mid Project\Mid Project\obj\Debug\Mid_Project.Forms.Students.resources
