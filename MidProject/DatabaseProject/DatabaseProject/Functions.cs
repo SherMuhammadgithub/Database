@@ -42,37 +42,86 @@ namespace DatabaseProject
             Con.Close();
             return cnt;
         }
-        public int SetDataAndReturnID(string query)
+        public List<Dictionary<string, object>> GetAssessmentComponents(int assessmentId)
         {
-            int newId = 0;
+            List<Dictionary<string, object>> components = new List<Dictionary<string, object>>();
 
-            if (Con.State == ConnectionState.Closed)
+            using (SqlConnection connection = new SqlConnection(conStr))
             {
-                Con.Open();
-            }
+                connection.Open();
 
-            try
-            {
-                // Combine insert and select in one query
-                Cmd.CommandText = query + "; SELECT SCOPE_IDENTITY();";
-                using (var reader = Cmd.ExecuteReader())
+                string query = "SELECT Id, Name, TotalMarks FROM AssessmentComponent WHERE AssessmentId = @AssessmentId";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@AssessmentId", assessmentId);
+
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    reader.Read();
-                    newId = reader.GetInt32(0);  //ID
+                    while (reader.Read())
+                    {
+                        Dictionary<string, object> component = new Dictionary<string, object>();
+                        component["Id"] = reader.GetInt32(0);
+                        component["Name"] = reader.GetString(1);
+                        component["TotalMarks"] = reader.GetInt32(2);
+
+                        components.Add(component);
+                    }
                 }
             }
-            catch (Exception ex)
+
+            return components;
+        }
+
+        public int GetStudentRubricLevel(int studentId, int componentId)
+        {
+            int rubricLevel = 0; // Default value
+
+            using (SqlConnection connection = new SqlConnection(conStr))
             {
-                // Handle potential exceptions during database operations
-                Console.WriteLine("Error retrieving ID: " + ex.Message);
-            }
-            finally
-            {
-                Con.Close();
+                connection.Open();
+
+                string query = "SELECT MeasurementLevel FROM StudentResult " +
+                               "INNER JOIN RubricLevel ON StudentResult.RubricMeasurementId = RubricLevel.Id " +
+                               "WHERE StudentId = @StudentId AND AssessmentComponentId = @ComponentId";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@StudentId", studentId);
+                command.Parameters.AddWithValue("@ComponentId", componentId);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        rubricLevel = reader.GetInt32(0); // Assuming MeasurementLevel is an integer column
+                    }
+                }
             }
 
-            return newId;
+            return rubricLevel;
         }
+
+        public int GetMaxRubricLevel()
+        {
+            int maxRubricLevel = 0; // Default value
+
+            using (SqlConnection connection = new SqlConnection(conStr))
+            {
+                connection.Open();
+
+                string query = "SELECT MAX(MeasurementLevel) FROM RubricLevel"; // Assuming MeasurementLevel stores the maximum level
+                SqlCommand command = new SqlCommand(query, connection);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        maxRubricLevel = reader.GetInt32(0); // Assuming MeasurementLevel is an integer column
+                    }
+                }
+            }
+
+            return maxRubricLevel;
+        }
+
+
 
     }
 }
