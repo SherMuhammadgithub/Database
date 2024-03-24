@@ -1,0 +1,13 @@
+C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\bin\Debug\Login.exe.config
+C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\bin\Debug\Login.exe
+C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\bin\Debug\Login.pdb
+C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\bin\Debug\Guna.UI2.dll
+C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\obj\Debug\Login.csproj.AssemblyReference.cache
+C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\obj\Debug\Login.frmLogin.resources
+C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\obj\Debug\Login.Properties.Resources.resources
+C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\obj\Debug\Login.csproj.GenerateResource.cache
+C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\obj\Debug\Login.csproj.CoreCompileInputs.cache
+C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\obj\Debug\Login.csproj.CopyComplete
+C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\obj\Debug\Login.exe
+C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\obj\Debug\Login.pdb
+C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\bin\Debug\FontAwesome.Sharp.dll
