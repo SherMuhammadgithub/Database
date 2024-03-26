@@ -11,3 +11,16 @@ C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\obj\Debug\Login.csproj.CopyCompl
 C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\obj\Debug\Login.exe
 C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\obj\Debug\Login.pdb
 C:\Users\mhmdu\Desktop\PARACTICE DB\Login\Login\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\dell\Pictures\Database\Login\Login\bin\Debug\Login.exe.config
+C:\Users\dell\Pictures\Database\Login\Login\bin\Debug\Login.exe
+C:\Users\dell\Pictures\Database\Login\Login\bin\Debug\Login.pdb
+C:\Users\dell\Pictures\Database\Login\Login\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\dell\Pictures\Database\Login\Login\bin\Debug\Guna.UI2.dll
+C:\Users\dell\Pictures\Database\Login\Login\obj\Debug\Login.csproj.AssemblyReference.cache
+C:\Users\dell\Pictures\Database\Login\Login\obj\Debug\Login.frmLogin.resources
+C:\Users\dell\Pictures\Database\Login\Login\obj\Debug\Login.Properties.Resources.resources
+C:\Users\dell\Pictures\Database\Login\Login\obj\Debug\Login.csproj.GenerateResource.cache
+C:\Users\dell\Pictures\Database\Login\Login\obj\Debug\Login.csproj.CoreCompileInputs.cache
+C:\Users\dell\Pictures\Database\Login\Login\obj\Debug\Login.csproj.CopyComplete
+C:\Users\dell\Pictures\Database\Login\Login\obj\Debug\Login.exe
+C:\Users\dell\Pictures\Database\Login\Login\obj\Debug\Login.pdb
