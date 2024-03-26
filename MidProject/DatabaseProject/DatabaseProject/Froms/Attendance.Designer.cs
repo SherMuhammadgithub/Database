@@ -212,7 +212,6 @@
             this.Controls.Add(this.CbRegNo);
             this.Name = "Attendance";
             this.Text = "Attendance";
-            this.Load += new System.EventHandler(this.Attendance_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

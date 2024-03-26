@@ -64,7 +64,6 @@
             this.Students.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Students.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Students.UseVisualStyleBackColor = false;
-            this.Students.Click += new System.EventHandler(this.Students_Click);
             // 
             // AddBtn
             // 

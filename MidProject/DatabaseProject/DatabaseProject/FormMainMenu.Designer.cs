@@ -50,7 +50,6 @@
             this.panelShadow = new System.Windows.Forms.Panel();
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.iconButton10 = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.panellogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.homeicon)).BeginInit();
@@ -65,7 +64,6 @@
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.panelMenu.Controls.Add(this.iconButton11);
-            this.panelMenu.Controls.Add(this.iconButton10);
             this.panelMenu.Controls.Add(this.iconButton9);
             this.panelMenu.Controls.Add(this.iconButton8);
             this.panelMenu.Controls.Add(this.iconButton7);
@@ -92,12 +90,12 @@
             this.iconButton11.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton11.IconSize = 32;
             this.iconButton11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton11.Location = new System.Drawing.Point(0, 532);
+            this.iconButton11.Location = new System.Drawing.Point(0, 483);
             this.iconButton11.Name = "iconButton11";
             this.iconButton11.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.iconButton11.Size = new System.Drawing.Size(220, 49);
             this.iconButton11.TabIndex = 10;
-            this.iconButton11.Text = "Exit";
+            this.iconButton11.Text = " Logout";
             this.iconButton11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton11.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton11.UseVisualStyleBackColor = true;
@@ -283,7 +281,6 @@
             this.homeicon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.homeicon.TabIndex = 1;
             this.homeicon.TabStop = false;
-           // this.homeicon.Click += new System.EventHandler(this.homeicon_Click);
             // 
             // pictureBox1
             // 
@@ -439,29 +436,6 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // iconButton10
-            // 
-            this.iconButton10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton10.FlatAppearance.BorderSize = 0;
-            this.iconButton10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton10.Font = new System.Drawing.Font("Copperplate Gothic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton10.ForeColor = System.Drawing.Color.Gainsboro;
-            this.iconButton10.IconChar = FontAwesome.Sharp.IconChar.ChessBoard;
-            this.iconButton10.IconColor = System.Drawing.Color.Gainsboro;
-            this.iconButton10.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton10.IconSize = 32;
-            this.iconButton10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton10.Location = new System.Drawing.Point(0, 483);
-            this.iconButton10.Name = "iconButton10";
-            this.iconButton10.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton10.Size = new System.Drawing.Size(220, 49);
-            this.iconButton10.TabIndex = 9;
-            this.iconButton10.Text = "Reports";
-            this.iconButton10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton10.UseVisualStyleBackColor = true;
-            this.iconButton10.Click += new System.EventHandler(this.iconButton10_Click);
-            // 
             // FormMainMenu
             // 
             this.ClientSize = new System.Drawing.Size(1016, 658);
@@ -469,9 +443,10 @@
             this.Controls.Add(this.panelShadow);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "5";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.FormMainMenu_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMainMenu_MouseDown);
             this.panelMenu.ResumeLayout(false);
@@ -511,7 +486,6 @@
         private FontAwesome.Sharp.IconButton cross;
         private FontAwesome.Sharp.IconButton minimize;
         private FontAwesome.Sharp.IconButton restore;
-        private FontAwesome.Sharp.IconButton iconButton10;
     }
 }
 

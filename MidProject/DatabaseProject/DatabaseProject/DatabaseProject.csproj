@@ -215,11 +215,11 @@
     <Compile Include="Froms\CLO.Designer.cs">
       <DependentUpon>CLO.cs</DependentUpon>
     </Compile>
-    <Compile Include="Froms\DashBoard.cs">
+    <Compile Include="Froms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Froms\DashBoard.Designer.cs">
-      <DependentUpon>DashBoard.cs</DependentUpon>
+    <Compile Include="Froms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Functions.cs" />
     <Compile Include="Program.cs" />
@@ -275,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Froms\CLO.resx">
       <DependentUpon>CLO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Froms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

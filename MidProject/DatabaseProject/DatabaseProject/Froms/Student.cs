@@ -31,17 +31,6 @@ namespace DatabaseProject
             CbStatus.DataSource = dt;
 
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
     
         private void LoadStudent()
         {
@@ -81,10 +70,6 @@ namespace DatabaseProject
         }
     }
 
-    private void Update_Click(object sender, EventArgs e)
-    {
-        
-    }
 
 
         int StdId = 0;
@@ -98,16 +83,6 @@ namespace DatabaseProject
             IpEmail.Text = StdGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
             IpRegNo.Text = StdGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
             CbStatus.SelectedValue = StdGrid.Rows[e.RowIndex].Cells[6].Value;
-        }
-
-        private void Student_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void IpLastName_Validating(object sender, CancelEventArgs e)
-        {
-
         }
         private bool ValidateEmail(string email)
         {
@@ -161,18 +136,7 @@ namespace DatabaseProject
             }
         }
 
-        private void IpEmail_Validating(object sender, CancelEventArgs e)
-        {
-            // apply email validation here
-
-           
-            
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
+ 
 
         private void AddBtn_Click(object sender, EventArgs e)
         {

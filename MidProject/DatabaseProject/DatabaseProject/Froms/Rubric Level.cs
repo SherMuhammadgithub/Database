@@ -84,15 +84,6 @@ namespace DatabaseProject
 
        
 
-        private void Students_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CbRbrcLvl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void AddBtn_Click(object sender, EventArgs e)
         {

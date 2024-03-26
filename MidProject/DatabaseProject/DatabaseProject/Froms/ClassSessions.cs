@@ -19,20 +19,27 @@ namespace DatabaseProject
             Connection = new Functions();
         }
 
-        private void Students_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
 
             try
             {
+
                 DateTime date = DatePick.Value.Date;
-                string Query = "INSERT INTO ClassAttendance(AttendanceDate) VALUES('{0}')";
-                Query = String.Format(Query, date);
-                int i = Connection.SetData(Query);
+                // check if the date is already in the database
+                string Query1 = "SELECT * FROM ClassAttendance WHERE AttendanceDate = '{0}'";
+                Query1 = String.Format(Query1, date);
+                DataTable dt = Connection.GetData(Query1);
+                if (dt.Rows.Count > 0)
+                {
+                    MessageBox.Show("Class Session Already Exists");
+                    return;
+                }
+                string Query2 = "INSERT INTO ClassAttendance(AttendanceDate) VALUES('{0}')";
+                Query2 = String.Format(Query2, date);
+                int i = Connection.SetData(Query2);
                 if (i == 1)
                 {
                     MessageBox.Show("Class Session Added");

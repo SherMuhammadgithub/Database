@@ -67,12 +67,9 @@ namespace DatabaseProject
             }
         }
 
-        private void Assessment_Load(object sender, EventArgs e)
-        {
+    
 
-        }
-
-      
+      // adding 
 
         private void EvaluateBt_Click(object sender, EventArgs e)
         {

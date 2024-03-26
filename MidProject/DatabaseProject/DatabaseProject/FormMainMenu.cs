@@ -142,7 +142,9 @@ namespace Mid_Project
         private void iconButton11_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color3);
-            Application.Exit();
+            this.Hide();
+            LoginForm showLoginScreen = new LoginForm();
+            showLoginScreen.Show();
 
         }
 

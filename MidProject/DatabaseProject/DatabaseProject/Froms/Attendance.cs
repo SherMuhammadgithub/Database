@@ -60,11 +60,6 @@ namespace DatabaseProject
                 return true; // if row is returned then attendance is already marked
             }
         }
-
-        private void Attendance_Load(object sender, EventArgs e)
-        {
-
-        }
         // mark attendance button
         private void MarkBt_Click(object sender, EventArgs e)
         {

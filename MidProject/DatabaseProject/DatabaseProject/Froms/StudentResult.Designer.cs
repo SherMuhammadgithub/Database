@@ -118,7 +118,6 @@
             this.dataGridViewResults.RowTemplate.Height = 24;
             this.dataGridViewResults.Size = new System.Drawing.Size(768, 193);
             this.dataGridViewResults.TabIndex = 8;
-            this.dataGridViewResults.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewResults_CellContentClick);
             // 
             // CbRbrcs
             // 
@@ -136,7 +135,6 @@
             this.CbRbrcsScore.Name = "CbRbrcsScore";
             this.CbRbrcsScore.Size = new System.Drawing.Size(162, 24);
             this.CbRbrcsScore.TabIndex = 11;
-            this.CbRbrcsScore.SelectedIndexChanged += new System.EventHandler(this.CbRbrcsScore_SelectedIndexChanged);
             // 
             // Students
             // 
@@ -324,7 +322,6 @@
             this.Name = "StudentResult";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentResult";
-            this.Load += new System.EventHandler(this.StudentResult_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResults)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

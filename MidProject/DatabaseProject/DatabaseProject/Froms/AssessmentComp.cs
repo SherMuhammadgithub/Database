@@ -94,15 +94,6 @@ namespace DatabaseProject
         }
 
 
-        private void delete_Click(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void iconButton3_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void AddBtn_Click(object sender, EventArgs e)
         {

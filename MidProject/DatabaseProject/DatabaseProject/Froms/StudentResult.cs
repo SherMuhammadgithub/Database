@@ -201,11 +201,7 @@ namespace DatabaseProject
             LoadAssessmentComponents();
         }
 
-        private void CbRbrcsScore_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
+   
         private void CbAssComp_SelectedIndexChanged(object sender, EventArgs e)
         {
                LoadRubrics();
@@ -217,21 +213,6 @@ namespace DatabaseProject
         }
 
        
-
-        private void StudentResult_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridViewResults_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void EvaluateBt_Click(object sender, EventArgs e)
         {
