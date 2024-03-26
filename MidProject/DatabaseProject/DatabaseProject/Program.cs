@@ -1,4 +1,5 @@
 ﻿
+using Login;
 using Mid_Project;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace DatabaseProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AssessmentComp());
+            Application.Run(new FormMainMenu());
 
         }
     }

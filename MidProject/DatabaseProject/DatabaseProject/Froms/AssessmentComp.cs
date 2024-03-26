@@ -95,7 +95,6 @@ namespace DatabaseProject
                         MessageBox.Show($"Component Marks can't be greater than Assessement Marks {assTMarks}");
                         return;
                     }
-            
                     string query = "INSERT INTO AssessmentComponent(Name, RubricId, TotalMarks, DateCreated, DateUpdated, AssessmentId)" +
                         " VALUES ('{0}', {1}, {2}, '{3}', '{4}', {5})";
                     query = string.Format(query, name, rubricId, totalMarks, dateCreated, dateUpdated, assessmentId);

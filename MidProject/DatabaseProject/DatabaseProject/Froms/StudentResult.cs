@@ -52,7 +52,7 @@ namespace DatabaseProject
             CbAss.ValueMember = "Id";
             CbAss.DataSource = dt;
         }
-        private void LoadAssessmentComponents()
+        public void LoadAssessmentComponents()
         {
            
            string Query = "Select * from AssessmentComponent where AssessmentId = " + CbAss.SelectedValue;
@@ -62,7 +62,7 @@ namespace DatabaseProject
            CbAssComp.DataSource = dt;
             
         }
-        private void LoadRubrics()
+        public void LoadRubrics()
         {
             string Query = "Select * from Rubric where Id = {0}";
             Query = String.Format(Query, GetRubricId());
@@ -71,7 +71,7 @@ namespace DatabaseProject
             CbRbrcs.ValueMember = "Id";
             CbRbrcs.DataSource = dt;
         }
-        private void LoadRubricLevels()
+        public void LoadRubricLevels()
         {
             string Query = "Select * from RubricLevel where RubricId = " + CbRbrcs.SelectedValue;
             DataTable dt = Connection.GetData(Query);
@@ -79,14 +79,14 @@ namespace DatabaseProject
             CbRbrcsScore.ValueMember = "Id";
             CbRbrcsScore.DataSource = dt;
         }
-        private int GetRubricId()
+        public int GetRubricId()
         {
             string Query = "Select RubricId from AssessmentComponent where Id = " + CbAssComp.SelectedValue;
             DataTable dt = Connection.GetData(Query);
             return Convert.ToInt32(dt.Rows[0][0]);
         }
        
-        private double GetHighestRubricLevel(int rbrcId)
+        public double GetHighestRubricLevel(int rbrcId)
         {
             string Query = "Select MAX(MeasurementLevel) from RubricLevel where RubricId = " + rbrcId;
             DataTable dt = Connection.GetData(Query);
@@ -98,13 +98,13 @@ namespace DatabaseProject
             
         }
      
-        private double GetAssComTMarks(int assComId)
+        public double GetAssComTMarks(int assComId)
         {
             string Query = "Select * from AssessmentComponent where Id = " + assComId;
             DataTable dt = Connection.GetData(Query);
             return  Convert.ToDouble(dt.Rows[0]["TotalMarks"]);
         }
-        private double CalculateMarks(double stdRubricLevel, int assComId,int rbrcId)
+        public double CalculateMarks(double stdRubricLevel, int assComId,int rbrcId)
         {
             
             totalMarks = GetAssComTMarks(assComId);
@@ -112,7 +112,7 @@ namespace DatabaseProject
             double obtainedRbrcLevel = DefiningScores(stdRubricLevel);
             return totalMarks * obtainedRbrcLevel / HighestRubrcLevel;
         }
-        private double DefiningScores(double measurementLevel)
+        public double DefiningScores(double measurementLevel)
         {
             double score = 0;
             if(measurementLevel == 4)
@@ -133,19 +133,19 @@ namespace DatabaseProject
             }
             return score;
         }
-        private string GetStudentName(int id)
+        public string GetStudentName(int id)
         {
             string Query = "Select FirstName from Student where Id = " + id;
             DataTable dt = Connection.GetData(Query);
             return dt.Rows[0][0].ToString();
         }
-        private double GetRubricLevel(int id)
+        public double GetRubricLevel(int id)
         {
             string Query = "Select MeasurementLevel from RubricLevel where Id = " + id;
             DataTable dt = Connection.GetData(Query);
             return Convert.ToDouble(dt.Rows[0][0]);
         }
-        private bool IsEvaluated()
+        public bool IsEvaluated()
         {
             int stdId = Convert.ToInt32(CbStd.SelectedValue);
             int assComId = Convert.ToInt32(CbAssComp.SelectedValue);
@@ -161,7 +161,7 @@ namespace DatabaseProject
                 return true;
             }
         }
-        private void Evaluate_Click(object sender, EventArgs e)
+        public void Evaluate_Click(object sender, EventArgs e)
         {
             try
             {
@@ -203,13 +203,13 @@ namespace DatabaseProject
                 MessageBox.Show(err.Message);
             }
         }
-        private int GetRubricId(int id)
+        public int GetRubricId(int id)
         {
             string Query = "Select RubricId from RubricLevel where Id = " + id;
             DataTable dt = Connection.GetData(Query);
-            return Convert.ToInt32(dt.Rows[0][0]);
+            return Convert.ToInt32(dt.Rows[0][0]); // return the rubric id
         }
-        private void LoadStudentResult()
+        public void LoadStudentResult()
         {
             string Query = "Select * from StudentResult";
             DataTable dt = Connection.GetData(Query);
@@ -231,7 +231,7 @@ namespace DatabaseProject
                 }
             }
         }
-        private string GetAssComName(int id)
+        public string GetAssComName(int id)
         {
             string Query = "Select Name from AssessmentComponent where Id = " + id;
             DataTable dt = Connection.GetData(Query);
@@ -255,6 +255,14 @@ namespace DatabaseProject
         private void CbRbrcs_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadRubricLevels();
+        }
+
+        private void report_Click(object sender, EventArgs e)
+        {
+             // show reports form 
+             Reports reports = new Reports();
+            reports.Show();
+
         }
     }
 }

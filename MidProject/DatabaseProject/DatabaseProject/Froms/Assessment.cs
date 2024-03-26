@@ -155,5 +155,17 @@ namespace DatabaseProject
                 return false;
             }
         }
+
+        private void Assessment_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GoToComp_Click(object sender, EventArgs e)
+        {
+            // show the component form
+            AssessmentComp comp = new AssessmentComp();
+            comp.Show();
+        }
     }
 }

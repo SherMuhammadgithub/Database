@@ -228,6 +228,9 @@ namespace Mid_Project
 
         }
 
-       
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

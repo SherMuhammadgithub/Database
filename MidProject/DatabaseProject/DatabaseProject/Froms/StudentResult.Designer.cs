@@ -41,22 +41,24 @@
             this.label5 = new System.Windows.Forms.Label();
             this.CbRbrcsScore = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.report = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResults)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Protest Riot", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(23, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 16);
+            this.label1.Size = new System.Drawing.Size(199, 34);
             this.label1.TabIndex = 0;
             this.label1.Text = "Student Evaluation";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(65, 86);
+            this.label2.Location = new System.Drawing.Point(64, 138);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 16);
             this.label2.TabIndex = 1;
@@ -65,7 +67,7 @@
             // CbStd
             // 
             this.CbStd.FormattingEnabled = true;
-            this.CbStd.Location = new System.Drawing.Point(155, 83);
+            this.CbStd.Location = new System.Drawing.Point(146, 138);
             this.CbStd.Name = "CbStd";
             this.CbStd.Size = new System.Drawing.Size(121, 24);
             this.CbStd.TabIndex = 2;
@@ -73,7 +75,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(366, 86);
+            this.label3.Location = new System.Drawing.Point(402, 141);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 16);
             this.label3.TabIndex = 3;
@@ -82,7 +84,7 @@
             // CbAss
             // 
             this.CbAss.FormattingEnabled = true;
-            this.CbAss.Location = new System.Drawing.Point(472, 86);
+            this.CbAss.Location = new System.Drawing.Point(528, 138);
             this.CbAss.Name = "CbAss";
             this.CbAss.Size = new System.Drawing.Size(121, 24);
             this.CbAss.TabIndex = 4;
@@ -91,7 +93,7 @@
             // CbAssComp
             // 
             this.CbAssComp.FormattingEnabled = true;
-            this.CbAssComp.Location = new System.Drawing.Point(68, 188);
+            this.CbAssComp.Location = new System.Drawing.Point(67, 226);
             this.CbAssComp.Name = "CbAssComp";
             this.CbAssComp.Size = new System.Drawing.Size(121, 24);
             this.CbAssComp.TabIndex = 5;
@@ -100,7 +102,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(65, 152);
+            this.label4.Location = new System.Drawing.Point(64, 190);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(161, 16);
             this.label4.TabIndex = 6;
@@ -111,9 +113,9 @@
             this.Evaluate.IconChar = FontAwesome.Sharp.IconChar.None;
             this.Evaluate.IconColor = System.Drawing.Color.Black;
             this.Evaluate.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.Evaluate.Location = new System.Drawing.Point(675, 381);
+            this.Evaluate.Location = new System.Drawing.Point(512, 312);
             this.Evaluate.Name = "Evaluate";
-            this.Evaluate.Size = new System.Drawing.Size(75, 23);
+            this.Evaluate.Size = new System.Drawing.Size(98, 32);
             this.Evaluate.TabIndex = 7;
             this.Evaluate.Text = "Evaluate";
             this.Evaluate.UseVisualStyleBackColor = true;
@@ -122,17 +124,18 @@
             // dataGridViewResults
             // 
             this.dataGridViewResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewResults.Location = new System.Drawing.Point(244, 136);
+            this.dataGridViewResults.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridViewResults.Location = new System.Drawing.Point(0, 378);
             this.dataGridViewResults.Name = "dataGridViewResults";
             this.dataGridViewResults.RowHeadersWidth = 51;
             this.dataGridViewResults.RowTemplate.Height = 24;
-            this.dataGridViewResults.Size = new System.Drawing.Size(520, 166);
+            this.dataGridViewResults.Size = new System.Drawing.Size(784, 207);
             this.dataGridViewResults.TabIndex = 8;
             // 
             // CbRbrcs
             // 
             this.CbRbrcs.FormattingEnabled = true;
-            this.CbRbrcs.Location = new System.Drawing.Point(68, 278);
+            this.CbRbrcs.Location = new System.Drawing.Point(315, 226);
             this.CbRbrcs.Name = "CbRbrcs";
             this.CbRbrcs.Size = new System.Drawing.Size(121, 24);
             this.CbRbrcs.TabIndex = 9;
@@ -141,7 +144,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(65, 242);
+            this.label5.Location = new System.Drawing.Point(312, 190);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 16);
             this.label5.TabIndex = 10;
@@ -150,7 +153,7 @@
             // CbRbrcsScore
             // 
             this.CbRbrcsScore.FormattingEnabled = true;
-            this.CbRbrcsScore.Location = new System.Drawing.Point(68, 371);
+            this.CbRbrcsScore.Location = new System.Drawing.Point(528, 226);
             this.CbRbrcsScore.Name = "CbRbrcsScore";
             this.CbRbrcsScore.Size = new System.Drawing.Size(121, 24);
             this.CbRbrcsScore.TabIndex = 11;
@@ -159,17 +162,28 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(65, 331);
+            this.label6.Location = new System.Drawing.Point(525, 190);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 16);
             this.label6.TabIndex = 12;
             this.label6.Text = "Rbrics Score";
             // 
+            // report
+            // 
+            this.report.Location = new System.Drawing.Point(635, 312);
+            this.report.Name = "report";
+            this.report.Size = new System.Drawing.Size(97, 32);
+            this.report.TabIndex = 13;
+            this.report.Text = "Report";
+            this.report.UseVisualStyleBackColor = true;
+            this.report.Click += new System.EventHandler(this.report_Click);
+            // 
             // StudentResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(784, 585);
+            this.Controls.Add(this.report);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.CbRbrcsScore);
             this.Controls.Add(this.label5);
@@ -184,6 +198,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "StudentResult";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentResult";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResults)).EndInit();
             this.ResumeLayout(false);
@@ -206,5 +221,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox CbRbrcsScore;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button report;
     }
 }
