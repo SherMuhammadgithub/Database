@@ -67,59 +67,7 @@ namespace DatabaseProject
             }
             return Convert.ToInt32(dt.Rows[0]["TotalMarks"]);
         }
-        private void Add_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (InputName.Text == "" || CbAssmnt.Text == "" || CbRbrcs.Text == "" || InputTMarks.Text == "")
-                {
-                    MessageBox.Show("Please enter all the fields");
-                }
-                else
-                {
-                    if (!ValidateMarks())
-                    {
-                        return;
-                    }
-                    string name = InputName.Text;
-                    int rubricId = Convert.ToInt32(CbRbrcs.SelectedValue);
-                    int totalMarks = Convert.ToInt32(InputTMarks.Text);
-                    DateTime dateCreated = DateTime.Now;
-                    DateTime dateUpdated = DateTime.Now;
-                    int assessmentId = Convert.ToInt32(CbAssmnt.SelectedValue);
-                    int sumOfAssCompMarks = GetSumOfAssCompMarks(assessmentId); // Get Sum of Previous Assessment Component Marks
-                    totalMarks += sumOfAssCompMarks;
-                    int assTMarks = GetAssessementTMarks(assessmentId); // Get Total Marks of Assessment
-                    if(totalMarks > assTMarks)
-                    {
-                        MessageBox.Show($"Component Marks can't be greater than Assessement Marks {assTMarks}");
-                        return;
-                    }
-                    string query = "INSERT INTO AssessmentComponent(Name, RubricId, TotalMarks, DateCreated, DateUpdated, AssessmentId)" +
-                        " VALUES ('{0}', {1}, {2}, '{3}', '{4}', {5})";
-                    query = string.Format(query, name, rubricId, totalMarks, dateCreated, dateUpdated, assessmentId);
-                    int i = Connection.SetData(query);
-                            if (i ==  1)
-                            {
-                                MessageBox.Show("Assessment Component Added Successfully");
-                                LoadAssessmentComp();
-                                InputName.Text = "";
-                                CbAssmnt.Text = "";
-                                CbRbrcs.Text = "";
-                                InputTMarks.Text = "";
-                            }
-                            else
-                            {
-                                MessageBox.Show("Failed to add assessment component.");
-                            }
-                    }
-                }
-            
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
-        }
+       
         private bool ValidateMarks()
         {
             Regex regex = new Regex("^[0-9]+$");
@@ -145,44 +93,81 @@ namespace DatabaseProject
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+        private void delete_Click(object sender, EventArgs e)
         {
+          
+        }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+
             try
             {
-               if(AssComKey == 0)
+                if (InputName.Text == "" || CbAssmnt.Text == "" || CbRbrcs.Text == "" || InputTMarks.Text == "")
                 {
-                    MessageBox.Show("Please select a record to Update");
-                    return;
+                    MessageBox.Show("Please enter all the fields");
                 }
-               string Query  = "UPDATE AssessmentComponent SET Name = '{0}', RubricId = {1}, TotalMarks = {2}, DateUpdated = '{3}', AssessmentId = {4} WHERE Id = {5}";
-                Query = string.Format(Query, InputName.Text, CbRbrcs.SelectedValue, InputTMarks.Text, DateTime.Now, CbAssmnt.SelectedValue, AssComKey);
-                int i = Connection.SetData(Query);
-                if (i == 1) // means 1 row is affected
+                else
                 {
-                    MessageBox.Show("Assessment Component Updated Successfully");
-                    LoadAssessmentComp();
-                    InputName.Text = "";
-                    CbRbrcs.Text = "";
-                    InputTMarks.Text = "";
-                    CbAssmnt.Text = "";
+                    if (!ValidateMarks())
+                    {
+                        return;
+                    }
+                    string name = InputName.Text;
+                    int rubricId = Convert.ToInt32(CbRbrcs.SelectedValue);
+                    int totalMarks = Convert.ToInt32(InputTMarks.Text);
+                    DateTime dateCreated = DateTime.Now;
+                    DateTime dateUpdated = DateTime.Now;
+                    int assessmentId = Convert.ToInt32(CbAssmnt.SelectedValue);
+                    int sumOfAssCompMarks = GetSumOfAssCompMarks(assessmentId); // Get Sum of Previous Assessment Component Marks
+                    totalMarks += sumOfAssCompMarks;
+                    int assTMarks = GetAssessementTMarks(assessmentId); // Get Total Marks of Assessment
+                    if (totalMarks > assTMarks)
+                    {
+                        MessageBox.Show($"Component Marks can't be greater than Assessement Marks {assTMarks}");
+                        return;
+                    }
+                    string query = "INSERT INTO AssessmentComponent(Name, RubricId, TotalMarks, DateCreated, DateUpdated, AssessmentId)" +
+                        " VALUES ('{0}', {1}, {2}, '{3}', '{4}', {5})";
+                    query = string.Format(query, name, rubricId, totalMarks, dateCreated, dateUpdated, assessmentId);
+                    int i = Connection.SetData(query);
+                    if (i == 1)
+                    {
+                        MessageBox.Show("Assessment Component Added Successfully");
+                        LoadAssessmentComp();
+                        InputName.Text = "";
+                        CbAssmnt.Text = "";
+                        CbRbrcs.Text = "";
+                        InputTMarks.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to add assessment component.");
+                    }
                 }
-             
             }
-            catch(Exception err)
+
+            catch (Exception err)
             {
                 MessageBox.Show(err.Message);
             }
         }
 
-        private void delete_Click(object sender, EventArgs e)
+        private void DeleteBtn_Click(object sender, EventArgs e)
         {
             try
             {
                 if (AssComKey == 0)
                 {
-                       MessageBox.Show("Please select a record to delete");
+                    MessageBox.Show("Please select a record to delete");
                     return;
-                
+
                 }
                 string Query = "DELETE FROM AssessmentComponent WHERE Id = {0}";
                 Query = string.Format(Query, AssComKey);
@@ -198,7 +183,36 @@ namespace DatabaseProject
 
                 }
             }
-            catch(Exception err)
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (AssComKey == 0)
+                {
+                    MessageBox.Show("Please select a record to Update");
+                    return;
+                }
+                string Query = "UPDATE AssessmentComponent SET Name = '{0}', RubricId = {1}, TotalMarks = {2}, DateUpdated = '{3}', AssessmentId = {4} WHERE Id = {5}";
+                Query = string.Format(Query, InputName.Text, CbRbrcs.SelectedValue, InputTMarks.Text, DateTime.Now, CbAssmnt.SelectedValue, AssComKey);
+                int i = Connection.SetData(Query);
+                if (i == 1) // means 1 row is affected
+                {
+                    MessageBox.Show("Assessment Component Updated Successfully");
+                    LoadAssessmentComp();
+                    InputName.Text = "";
+                    CbRbrcs.Text = "";
+                    InputTMarks.Text = "";
+                    CbAssmnt.Text = "";
+                }
+
+            }
+            catch (Exception err)
             {
                 MessageBox.Show(err.Message);
             }

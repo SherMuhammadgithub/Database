@@ -283,7 +283,7 @@
             this.homeicon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.homeicon.TabIndex = 1;
             this.homeicon.TabStop = false;
-            this.homeicon.Click += new System.EventHandler(this.homeicon_Click);
+           // this.homeicon.Click += new System.EventHandler(this.homeicon_Click);
             // 
             // pictureBox1
             // 

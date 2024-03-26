@@ -26,57 +26,8 @@ namespace DatabaseProject
             DataTable dt = Connection.GetData(Query);
             CloDataGrid.DataSource = dt;
         }
-        private void AddClo_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if(InputClo.Text == "")
-                {
-                    MessageBox.Show("Please enter the CLO");
-                }
-                else
-                {
-                    string Query = "INSERT INTO Clo(Name, DateCreated, DateUpdated) VALUES('" + InputClo.Text + "', '" + DateTime.Now + "', '" + DateTime.Now + "')";
-                    int i = Connection.SetData(Query);
-                    if(i == 1) // means 1 row is affected
-                    {
-                        CLO_Load();
-                        MessageBox.Show("CLO Added Successfully");
-                        InputClo.Text = "";
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+       
         
-        private void UpdateClo_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if(InputClo.Text == "")
-                {
-                    MessageBox.Show("Please enter the CLO");
-                }
-                else
-                {
-                    string Query = "UPDATE Clo SET Name = '" + InputClo.Text + "', DateUpdated = '" + DateTime.Now + "' WHERE Id = '" + cloIndexKey + "'";
-                    int i = Connection.SetData(Query);
-                    if(i == 1) // means 1 row is affected
-                    {
-                        CLO_Load();
-                        MessageBox.Show("CLO Updated Successfully");
-                        InputClo.Text = "";
-                    }
-                }
-            }
-            catch(Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
-        }
         int cloIndexKey = 0;
         private void CloDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -91,11 +42,39 @@ namespace DatabaseProject
             }
         }
 
-        private void DeleteClo_Click(object sender, EventArgs e)
+       
+
+        private void AddBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                if(InputClo.Text == "")
+                if (InputClo.Text == "")
+                {
+                    MessageBox.Show("Please enter the CLO");
+                }
+                else
+                {
+                    string Query = "INSERT INTO Clo(Name, DateCreated, DateUpdated) VALUES('" + InputClo.Text + "', '" + DateTime.Now + "', '" + DateTime.Now + "')";
+                    int i = Connection.SetData(Query);
+                    if (i == 1) // means 1 row is affected
+                    {
+                        CLO_Load();
+                        MessageBox.Show("CLO Added Successfully");
+                        InputClo.Text = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (InputClo.Text == "")
                 {
                     MessageBox.Show("Plz Select the data to delete");
                 }
@@ -103,7 +82,7 @@ namespace DatabaseProject
                 {
                     string Query = "DELETE FROM Clo WHERE Id = '" + cloIndexKey + "'";
                     int i = Connection.SetData(Query);
-                    if(i == 1) // means 1 row is affected
+                    if (i == 1) // means 1 row is affected
                     {
                         CLO_Load();
                         MessageBox.Show("CLO Deleted Successfully");
@@ -111,7 +90,33 @@ namespace DatabaseProject
                     }
                 }
             }
-            catch(Exception err)
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (InputClo.Text == "")
+                {
+                    MessageBox.Show("Please enter the CLO");
+                }
+                else
+                {
+                    string Query = "UPDATE Clo SET Name = '" + InputClo.Text + "', DateUpdated = '" + DateTime.Now + "' WHERE Id = '" + cloIndexKey + "'";
+                    int i = Connection.SetData(Query);
+                    if (i == 1) // means 1 row is affected
+                    {
+                        CLO_Load();
+                        MessageBox.Show("CLO Updated Successfully");
+                        InputClo.Text = "";
+                    }
+                }
+            }
+            catch (Exception err)
             {
                 MessageBox.Show(err.Message);
             }

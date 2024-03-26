@@ -19,8 +19,14 @@ namespace DatabaseProject
             Connection = new Functions();
         }
 
-        private void AddDate_Click(object sender, EventArgs e)
+        private void Students_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+
             try
             {
                 DateTime date = DatePick.Value.Date;
@@ -36,7 +42,7 @@ namespace DatabaseProject
                     MessageBox.Show("Error");
                 }
             }
-            catch(Exception err)
+            catch (Exception err)
             {
                 MessageBox.Show(err.Message);
             }

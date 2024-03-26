@@ -146,12 +146,7 @@ namespace Mid_Project
 
         }
 
-   
-        private void homeicon_Click(object sender, EventArgs e)
-        {
-            currentChildForm.Close();
-            Reset();
-        }
+  
         private void Reset()
         {
             DisableButton();

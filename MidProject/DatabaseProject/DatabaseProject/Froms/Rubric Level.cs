@@ -36,36 +36,7 @@ namespace DatabaseProject
                 MessageBox.Show(ex.Message);
             }
         }
-        private void Add_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if(InputDetails.Text == "" || CbRbrcs.Text == "" || CbRbrcs.Text == "")
-                {
-                    MessageBox.Show("Please enter all the fields");
-                }
-                else
-                {
-                    int rbrcId = Convert.ToInt32(CbRbrcs.SelectedValue);
-                    int rbrcLvl = GetRubricLevelInteger();
-                    string Query = "INSERT INTO RubricLevel(RubricId, Details, MeasurementLevel) VALUES({0},'{1}',{2})"; // CbRbrcLvl.SelectedValue confirmation from sir
-                    Query = string.Format(Query,rbrcId, InputDetails.Text, rbrcLvl);
-                    int i = Connection.SetData(Query);
-                    if (i == 1) // means 1 row is affected
-                    {
-                        LoadRubricLevel();
-                        MessageBox.Show("Rubric Level Added Successfully");
-                        InputDetails.Text = "";
-                        CbRbrcs.Text = "";
-                        CbRbrcLvl.Text = "";
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+      
         private void LoadRubricLevel()
         {
             try
@@ -110,11 +81,55 @@ namespace DatabaseProject
 
         }
 
-        private void delete_Click(object sender, EventArgs e)
+
+       
+
+        private void Students_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CbRbrcLvl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                if(RbrcLvlKey == 0)
+                if (InputDetails.Text == "" || CbRbrcs.Text == "" || CbRbrcs.Text == "")
+                {
+                    MessageBox.Show("Please enter all the fields");
+                }
+                else
+                {
+                    int rbrcId = Convert.ToInt32(CbRbrcs.SelectedValue);
+                    int rbrcLvl = GetRubricLevelInteger();
+                    string Query = "INSERT INTO RubricLevel(RubricId, Details, MeasurementLevel) VALUES({0},'{1}',{2})"; // CbRbrcLvl.SelectedValue confirmation from sir
+                    Query = string.Format(Query, rbrcId, InputDetails.Text, rbrcLvl);
+                    int i = Connection.SetData(Query);
+                    if (i == 1) // means 1 row is affected
+                    {
+                        LoadRubricLevel();
+                        MessageBox.Show("Rubric Level Added Successfully");
+                        InputDetails.Text = "";
+                        CbRbrcs.Text = "";
+                        CbRbrcLvl.Text = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (RbrcLvlKey == 0)
                 {
                     MessageBox.Show("Please select a record to delete");
                     return;
@@ -132,16 +147,16 @@ namespace DatabaseProject
                 }
                 else
                 {
-                       MessageBox.Show("Failed to delete rubric level.");
+                    MessageBox.Show("Failed to delete rubric level.");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
 
-        private void update_Click(object sender, EventArgs e)
+        private void UpdateBtn_Click(object sender, EventArgs e)
         {
             try
             {
@@ -150,29 +165,34 @@ namespace DatabaseProject
                     MessageBox.Show("Please select a record to update");
                     return;
                 }
-             
-                    int rbrcId = Convert.ToInt32(CbRbrcs.SelectedValue);
-                    int rbrcLvl = GetRubricLevelInteger();
-                    string Query = "UPDATE RubricLevel SET RubricId = {0}, Details = '{1}', MeasurementLevel = {2} WHERE Id = {3}";
-                    Query = string.Format(Query, rbrcId, InputDetails.Text, rbrcLvl, RbrcLvlKey);
-                    int i = Connection.SetData(Query);
-                    if (i == 1) // means 1 row is affected
-                    {
-                        LoadRubricLevel();
-                        MessageBox.Show("Rubric Level Updated Successfully");
-                        InputDetails.Text = "";
-                        CbRbrcs.Text = "";
-                        CbRbrcLvl.Text = "";
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to update rubric level.");
-                    }
+
+                int rbrcId = Convert.ToInt32(CbRbrcs.SelectedValue);
+                int rbrcLvl = GetRubricLevelInteger();
+                string Query = "UPDATE RubricLevel SET RubricId = {0}, Details = '{1}', MeasurementLevel = {2} WHERE Id = {3}";
+                Query = string.Format(Query, rbrcId, InputDetails.Text, rbrcLvl, RbrcLvlKey);
+                int i = Connection.SetData(Query);
+                if (i == 1) // means 1 row is affected
+                {
+                    LoadRubricLevel();
+                    MessageBox.Show("Rubric Level Updated Successfully");
+                    InputDetails.Text = "";
+                    CbRbrcs.Text = "";
+                    CbRbrcLvl.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Failed to update rubric level.");
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void Rubric_Level_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

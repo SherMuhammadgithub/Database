@@ -27,41 +27,6 @@ namespace DatabaseProject
             AssessmentDataGrid.DataSource = dt;
         }
 
-        private void AddAssmnt_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (InputAssTitle.Text == "" || InputAssTMarks.Text == "" || InputAssTWeightage.Text == "")
-                {
-                    MessageBox.Show("Please enter all the fields");
-                }
-                else
-                {
-                    if (!ValidateMarks())
-                    {
-                        return;
-                    }
-                    if (!ValidateWeightage())
-                    {
-                        return;
-                    }
-                    string Query = "INSERT INTO Assessment(Title, DateCreated, TotalMarks, TotalWeightage) VALUES('" + InputAssTitle.Text + "', '" + DateTime.Now + "', '" + InputAssTMarks.Text + "', '" + InputAssTWeightage.Text + "')";
-                    int i = Connection.SetData(Query);
-                    if (i == 1) // means 1 row is affected
-                    {
-                        Assessment_Load();
-                        MessageBox.Show("Assessment Added Successfully");
-                        InputAssTitle.Text = "";
-                        InputAssTMarks.Text = "";
-                        InputAssTWeightage.Text = "";
-                    }
-                }
-            }
-            catch(Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
-        }
 
         int AssmtId;
         private void AssessmentDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -72,61 +37,7 @@ namespace DatabaseProject
             InputAssTWeightage.Text = AssessmentDataGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if(InputAssTitle.Text == "" || InputAssTitle.Text == "" || InputAssTMarks.Text == "")
-                {
-                   MessageBox.Show("Please enter all the fields");
-                }
-                else
-                {
-                    string Query = "DELETE FROM Assessment WHERE Id = '" + AssmtId + "'";
-                    int i = Connection.SetData(Query);
-                    if(i == 1) // means 1 row is affected
-                    { 
-                        Assessment_Load();
-                        MessageBox.Show("Assessment Deleted Successfully");
-                        InputAssTitle.Text = "";
-                        InputAssTMarks.Text = "";
-                        InputAssTWeightage.Text = "";
-                    }
-                }
-            }
-            catch(Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
-        }
-
-        private void Update_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (InputAssTitle.Text == "" || InputAssTitle.Text == "" || InputAssTMarks.Text == "")
-                {
-                    MessageBox.Show("Please enter all the fields");
-                }
-                else
-                {
-                    string Query = "UPDATE Assessment SET Title = '" + InputAssTitle.Text + "', DateCreated = '" + DateTime.Now + "', TotalMarks = '" + InputAssTMarks.Text + "', TotalWeightage = '" + InputAssTWeightage.Text + "' WHERE Id = '" + AssmtId + "'";
-                    int i = Connection.SetData(Query);
-                    if (i == 1) // means 1 row is affected
-                    {
-                        Assessment_Load();
-                        MessageBox.Show("Assessment Updated Successfully");
-                        InputAssTitle.Text = "";
-                        InputAssTMarks.Text = "";
-                        InputAssTWeightage.Text = "";
-                    }
-                }
-            }
-            catch(Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }   
-        }
+       
         private bool ValidateMarks()
         {
             Regex regex = new Regex("^[0-9]+$");
@@ -161,11 +72,108 @@ namespace DatabaseProject
 
         }
 
-        private void GoToComp_Click(object sender, EventArgs e)
+      
+
+        private void EvaluateBt_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (InputAssTitle.Text == "" || InputAssTMarks.Text == "" || InputAssTWeightage.Text == "")
+                {
+                    MessageBox.Show("Please enter all the fields");
+                }
+                else
+                {
+                    if (!ValidateMarks())
+                    {
+                        return;
+                    }
+                    if (!ValidateWeightage())
+                    {
+                        return;
+                    }
+                    string Query = "INSERT INTO Assessment(Title, DateCreated, TotalMarks, TotalWeightage) VALUES('" + InputAssTitle.Text + "', '" + DateTime.Now + "', '" + InputAssTMarks.Text + "', '" + InputAssTWeightage.Text + "')";
+                    int i = Connection.SetData(Query);
+                    if (i == 1) // means 1 row is affected
+                    {
+                        Assessment_Load();
+                        MessageBox.Show("Assessment Added Successfully");
+                        InputAssTitle.Text = "";
+                        InputAssTMarks.Text = "";
+                        InputAssTWeightage.Text = "";
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void ManageComp_Click(object sender, EventArgs e)
         {
             // show the component form
             AssessmentComp comp = new AssessmentComp();
             comp.Show();
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (InputAssTitle.Text == "" || InputAssTitle.Text == "" || InputAssTMarks.Text == "")
+                {
+                    MessageBox.Show("Please enter all the fields");
+                }
+                else
+                {
+                    string Query = "DELETE FROM Assessment WHERE Id = '" + AssmtId + "'";
+                    int i = Connection.SetData(Query);
+                    if (i == 1) // means 1 row is affected
+                    {
+                        Assessment_Load();
+                        MessageBox.Show("Assessment Deleted Successfully");
+                        InputAssTitle.Text = "";
+                        InputAssTMarks.Text = "";
+                        InputAssTWeightage.Text = "";
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (InputAssTitle.Text == "" || InputAssTitle.Text == "" || InputAssTMarks.Text == "")
+                {
+                    MessageBox.Show("Please enter all the fields");
+                }
+                else
+                {
+                    string Query = "UPDATE Assessment SET Title = '" + InputAssTitle.Text + "', DateCreated = '" + DateTime.Now + "', TotalMarks = '" + InputAssTMarks.Text + "', TotalWeightage = '" + InputAssTWeightage.Text + "' WHERE Id = '" + AssmtId + "'";
+                    int i = Connection.SetData(Query);
+                    if (i == 1) // means 1 row is affected
+                    {
+                        Assessment_Load();
+                        MessageBox.Show("Assessment Updated Successfully");
+                        InputAssTitle.Text = "";
+                        InputAssTMarks.Text = "";
+                        InputAssTWeightage.Text = "";
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
     }
 }

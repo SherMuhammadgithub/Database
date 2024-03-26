@@ -33,7 +33,35 @@ namespace DatabaseProject
             CLOsCb.DataSource = dt;
         }
 
-        private void AddRubrc_Click(object sender, EventArgs e)
+      
+        private void Rubric_Load()
+        {
+            string query = "SELECT * FROM Rubric";
+            DataTable dt = Connection.GetData(query);
+            RbrcDataGrid.DataSource = dt;
+        }
+        
+
+       
+        int RubricKey = 0;
+        private void RbrcDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            RubricKey = Convert.ToInt32(RbrcDataGrid.Rows[e.RowIndex].Cells[0].Value);
+            InputRbrcId.Text = RbrcDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+            InputRubDetail.Text = RbrcDataGrid.Rows[e.RowIndex].Cells[1].Value.ToString();
+            CLOsCb.SelectedValue = RbrcDataGrid.Rows[e.RowIndex].Cells[2].Value;
+
+        }
+
+      
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddBtn_Click(object sender, EventArgs e)
         {
             try
             {
@@ -69,21 +97,51 @@ namespace DatabaseProject
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);
-       }
+            }
         }
-        private void Rubric_Load()
-        {
-            string query = "SELECT * FROM Rubric";
-            DataTable dt = Connection.GetData(query);
-            RbrcDataGrid.DataSource = dt;
-        }
-        
 
-        private void Update_Click(object sender, EventArgs e)
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (InputRubDetail.Text == "" || InputRbrcId.Text == "")
+                {
+                    MessageBox.Show("Please enter all the fields");
+                }
+                else
+                {
+                    int rubricId = int.Parse(InputRbrcId.Text.ToString());
+                    string Query = "DELETE FROM Rubric WHERE Id = {0}";
+                    Query = string.Format(Query, rubricId);
+
+                    int rowsAffected = Connection.SetData(Query);
+
+                    if (rowsAffected == 1)
+                    {
+                        MessageBox.Show("Rubric Deleted Successfully");
+                        Rubric_Load();
+                        InputRbrcId.Text = "";
+                        InputRubDetail.Text = "";
+                        CLOsCb.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete rubric.");
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void UpdateBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                if(InputRubDetail.Text == "" || InputRbrcId.Text == "")
+                if (InputRubDetail.Text == "" || InputRbrcId.Text == "")
                 {
                     MessageBox.Show("Please enter all the fields");
                 }
@@ -117,51 +175,12 @@ namespace DatabaseProject
                 MessageBox.Show(err.Message);
             }
         }
-        int RubricKey = 0;
-        private void RbrcDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void RbrcLvl_Click(object sender, EventArgs e)
         {
-
-            RubricKey = Convert.ToInt32(RbrcDataGrid.Rows[e.RowIndex].Cells[0].Value);
-            InputRbrcId.Text = RbrcDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-            InputRubDetail.Text = RbrcDataGrid.Rows[e.RowIndex].Cells[1].Value.ToString();
-            CLOsCb.SelectedValue = RbrcDataGrid.Rows[e.RowIndex].Cells[2].Value;
-
-        }
-
-        private void delete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if(InputRubDetail.Text == "" || InputRbrcId.Text == "")
-                {
-                    MessageBox.Show("Please enter all the fields");
-                }
-                else
-                {
-                    int rubricId = int.Parse(InputRbrcId.Text.ToString());
-                    string Query = "DELETE FROM Rubric WHERE Id = {0}";
-                    Query = string.Format(Query, rubricId);
-
-                    int rowsAffected = Connection.SetData(Query);
-
-                    if (rowsAffected == 1)
-                    {
-                        MessageBox.Show("Rubric Deleted Successfully");
-                        Rubric_Load();
-                        InputRbrcId.Text = "";
-                        InputRubDetail.Text = "";
-                        CLOsCb.Text = "";
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to delete rubric.");
-                    }
-                }
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
+            // show Rubric Level form
+            Rubric_Level rbrcLvl = new Rubric_Level();
+            rbrcLvl.Show();
         }
     }
 }

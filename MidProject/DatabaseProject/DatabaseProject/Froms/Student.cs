@@ -42,58 +42,7 @@ namespace DatabaseProject
 
         }
 
-        private void Add_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // empty value check will be added in future
-               if(!ValidateEmail(IpEmail.Text))
-                   {
-                    return;
-                }
-               if (!ValidateContact(IpContact.Text))
-                {
-                    return;
-                }
-               if (!ValidateRegNo(IpRegNo.Text))
-                {
-                    return;
-                }
-
-                string Name = IpFirstName.Text;
-                string LastName = IpLastName.Text;
-                string Contact = IpContact.Text;
-                string Email = IpEmail.Text;
-       
-                string RegNo = IpRegNo.Text;
-                int Status = Convert.ToInt32(CbStatus.SelectedValue);
-
-
-                string Query = "INSERT INTO Student(FirstName, LastName, Contact, Email, RegistrationNumber, Status) VALUES('{0}','{1}','{2}','{3}','{4}',{5})";
-                Query = string.Format(Query, Name, LastName, Contact, Email, RegNo, Status);
-                int Rows = Connection.SetData(Query);
-                if (Rows > 0)
-                {
-                    MessageBox.Show("Student Added Successfully");
-                    LoadStudent();
-                    IpContact.Text = "";
-                    IpEmail.Text = "";
-                    IpFirstName.Text = "";
-                    IpLastName.Text = "";
-                    IpRegNo.Text = "";
-                    CbStatus.SelectedIndex = 0;
-                }
-                else
-                {
-                    MessageBox.Show("Error Occured");
-                }
-
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
-        }
+    
         private void LoadStudent()
         {
             string Query = "Select * from Student";
@@ -134,31 +83,7 @@ namespace DatabaseProject
 
     private void Update_Click(object sender, EventArgs e)
     {
-        try
-        {
-            string Query = "Update Student set FirstName = '{0}', LastName = '{1}', Contact = '{2}', Email = '{3}', RegistrationNumber = '{4}', Status = {5} where Id = {6}";
-            Query = string.Format(Query, IpFirstName.Text, IpLastName.Text, IpContact.Text, IpEmail.Text, IpRegNo.Text, CbStatus.SelectedValue, StdId);
-            int Rows = Connection.SetData(Query);
-            if (Rows > 0)
-            {
-                MessageBox.Show("Student Updated Successfully");
-                LoadStudent();
-                IpContact.Text = "";
-                IpEmail.Text = "";
-                IpFirstName.Text = "";
-                IpLastName.Text = "";
-                IpRegNo.Text = "";
-                CbStatus.SelectedIndex = 0;
-            }
-            else
-            {
-                MessageBox.Show("Error Occured");
-            }
-        }
-        catch (Exception err)
-        {
-            MessageBox.Show(err.Message);
-        }
+        
     }
 
 
@@ -242,6 +167,122 @@ namespace DatabaseProject
 
            
             
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // empty value check will be added in future
+                if (!ValidateEmail(IpEmail.Text))
+                {
+                    return;
+                }
+                if (!ValidateContact(IpContact.Text))
+                {
+                    return;
+                }
+                if (!ValidateRegNo(IpRegNo.Text))
+                {
+                    return;
+                }
+
+                string Name = IpFirstName.Text;
+                string LastName = IpLastName.Text;
+                string Contact = IpContact.Text;
+                string Email = IpEmail.Text;
+
+                string RegNo = IpRegNo.Text;
+                int Status = Convert.ToInt32(CbStatus.SelectedValue);
+
+
+                string Query = "INSERT INTO Student(FirstName, LastName, Contact, Email, RegistrationNumber, Status) VALUES('{0}','{1}','{2}','{3}','{4}',{5})";
+                Query = string.Format(Query, Name, LastName, Contact, Email, RegNo, Status);
+                int Rows = Connection.SetData(Query);
+                if (Rows > 0)
+                {
+                    MessageBox.Show("Student Added Successfully");
+                    LoadStudent();
+                    IpContact.Text = "";
+                    IpEmail.Text = "";
+                    IpFirstName.Text = "";
+                    IpLastName.Text = "";
+                    IpRegNo.Text = "";
+                    CbStatus.SelectedIndex = 0;
+                }
+                else
+                {
+                    MessageBox.Show("Error Occured");
+                }
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string Query = "Delete from Student where Id = {0}";
+                Query = string.Format(Query, StdId);
+                int Rows = Connection.SetData(Query);
+                if (Rows > 0)
+                {
+                    MessageBox.Show("Student Deleted Successfully");
+                    LoadStudent();
+                    IpContact.Text = "";
+                    IpEmail.Text = "";
+                    IpFirstName.Text = "";
+                    IpLastName.Text = "";
+                    IpRegNo.Text = "";
+                    CbStatus.SelectedIndex = 0;
+                }
+                else
+                {
+                    MessageBox.Show("Error Occured");
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
+            try
+        {
+            string Query = "Update Student set FirstName = '{0}', LastName = '{1}', Contact = '{2}', Email = '{3}', RegistrationNumber = '{4}', Status = {5} where Id = {6}";
+            Query = string.Format(Query, IpFirstName.Text, IpLastName.Text, IpContact.Text, IpEmail.Text, IpRegNo.Text, CbStatus.SelectedValue, StdId);
+            int Rows = Connection.SetData(Query);
+            if (Rows > 0)
+            {
+                MessageBox.Show("Student Updated Successfully");
+                LoadStudent();
+                IpContact.Text = "";
+                IpEmail.Text = "";
+                IpFirstName.Text = "";
+                IpLastName.Text = "";
+                IpRegNo.Text = "";
+                CbStatus.SelectedIndex = 0;
+            }
+            else
+            {
+                MessageBox.Show("Error Occured");
+            }
+        }
+        catch (Exception err)
+        {
+            MessageBox.Show(err.Message);
+        }
         }
     }
 }

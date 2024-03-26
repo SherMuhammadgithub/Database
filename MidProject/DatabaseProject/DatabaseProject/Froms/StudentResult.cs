@@ -161,48 +161,7 @@ namespace DatabaseProject
                 return true;
             }
         }
-        public void Evaluate_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int rubricId = Convert.ToInt32(CbRbrcs.SelectedValue);
-                int stdId = Convert.ToInt32(CbStd.SelectedValue);
-                string stdName = GetStudentName(stdId);
-                int assComId = Convert.ToInt32(CbAssComp.SelectedValue);
-                string assComName = GetAssComName(assComId);
-                int stdRubricLevelId = Convert.ToInt32(CbRbrcsScore.SelectedValue);
-                double stdRubricLevel = GetRubricLevel(stdRubricLevelId);
-                double obtainedMarks = CalculateMarks(stdRubricLevel, assComId,rubricId);
-                DateTime date = DateTime.Now;
-                // check if the student has already been evaluated
-                bool studentEvaluated = IsEvaluated();
-                if(studentEvaluated)
-                {
-                    MessageBox.Show("Student has already been evaluated");
-                    return;
-                }
-                
-                    dataGridViewResults.Rows.Add(stdName, assComName, totalMarks, stdRubricLevel, obtainedMarks);
-                    string Query = "Insert into StudentResult(StudentId, AssessmentComponentId, RubricMeasurementId,EvaluationDate) Values({0},{1},{2},'{3}')";
-                    Query = String.Format(Query, stdId, assComId, stdRubricLevelId, date);
-                    int i = Connection.SetData(Query);
-                    if (i == 1)
-                    {
-                        MessageBox.Show("Result Added");
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error");
-                    }
-                
-               
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
-        }
+      
         public int GetRubricId(int id)
         {
             string Query = "Select RubricId from RubricLevel where Id = " + id;
@@ -257,12 +216,71 @@ namespace DatabaseProject
             LoadRubricLevels();
         }
 
-        private void report_Click(object sender, EventArgs e)
-        {
-             // show reports form 
-             Reports reports = new Reports();
-            reports.Show();
+       
 
+        private void StudentResult_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewResults_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EvaluateBt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int rubricId = Convert.ToInt32(CbRbrcs.SelectedValue);
+                int stdId = Convert.ToInt32(CbStd.SelectedValue);
+                string stdName = GetStudentName(stdId);
+                int assComId = Convert.ToInt32(CbAssComp.SelectedValue);
+                string assComName = GetAssComName(assComId);
+                int stdRubricLevelId = Convert.ToInt32(CbRbrcsScore.SelectedValue);
+                double stdRubricLevel = GetRubricLevel(stdRubricLevelId);
+                double obtainedMarks = CalculateMarks(stdRubricLevel, assComId, rubricId);
+                DateTime date = DateTime.Now;
+                // check if the student has already been evaluated
+                bool studentEvaluated = IsEvaluated();
+                if (studentEvaluated)
+                {
+                    MessageBox.Show("Student has already been evaluated");
+                    return;
+                }
+
+                dataGridViewResults.Rows.Add(stdName, assComName, totalMarks, stdRubricLevel, obtainedMarks);
+                string Query = "Insert into StudentResult(StudentId, AssessmentComponentId, RubricMeasurementId,EvaluationDate) Values({0},{1},{2},'{3}')";
+                Query = String.Format(Query, stdId, assComId, stdRubricLevelId, date);
+                int i = Connection.SetData(Query);
+                if (i == 1)
+                {
+                    MessageBox.Show("Result Added");
+
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
+
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void ReportBt_Click(object sender, EventArgs e)
+        {
+            // show reports form 
+            Reports reports = new Reports();
+            reports.Show();
         }
     }
 }

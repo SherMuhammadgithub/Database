@@ -45,7 +45,28 @@ namespace DatabaseProject
             CbRegNo.ValueMember = "Id";
             CbRegNo.DataSource = dt;
         }
-        private void Add_Click(object sender, EventArgs e)
+      
+        private bool CheckAttendance(int stdId, int attendId) // this will check if attendance is already set for the date
+        {
+            string Query = "Select * from StudentAttendance Where StudentId = {0} and AttendanceId = {1}";
+            Query = String.Format(Query, stdId, attendId);
+            DataTable dt = Connection.GetData(Query);
+            if (dt.Rows.Count == 0) // if no row is returned then attendance is not marked
+            {
+                return false;
+            }
+            else
+            {
+                return true; // if row is returned then attendance is already marked
+            }
+        }
+
+        private void Attendance_Load(object sender, EventArgs e)
+        {
+
+        }
+        // mark attendance button
+        private void MarkBt_Click(object sender, EventArgs e)
         {
             try
             {
@@ -53,11 +74,11 @@ namespace DatabaseProject
                 int AttendanceId = Convert.ToInt32(SessionAttend.SelectedValue);
                 int StudentId = Convert.ToInt32(CbRegNo.SelectedValue);
                 bool isAlreadyMarked = CheckAttendance(StudentId, AttendanceId);
-                if(isAlreadyMarked)
+                if (isAlreadyMarked)
                 {
                     MessageBox.Show("The Attedndance is already marked");
                     return;
-                }     
+                }
                 int StatusId = Convert.ToInt32(CbStatus.SelectedValue);
                 string Query = "Insert into StudentAttendance (AttendanceId, StudentId, AttendanceStatus) Values({0},{1},{2})";
                 Query = String.Format(Query, AttendanceId, StudentId, StatusId);
@@ -77,19 +98,12 @@ namespace DatabaseProject
                 MessageBox.Show(err.Message);
             }
         }
-        private bool CheckAttendance(int stdId, int attendId) // this will check if attendance is already set for the date
+
+        private void ClassSession_Click(object sender, EventArgs e)
         {
-            string Query = "Select * from StudentAttendance Where StudentId = {0} and AttendanceId = {1}";
-            Query = String.Format(Query, stdId, attendId);
-            DataTable dt = Connection.GetData(Query);
-            if (dt.Rows.Count == 0) // if no row is returned then attendance is not marked
-            {
-                return false;
-            }
-            else
-            {
-                return true; // if row is returned then attendance is already marked
-            }
+            // show class session form
+            ClassSessions classSession = new ClassSessions();
+            classSession.Show();
         }
     }
 }
